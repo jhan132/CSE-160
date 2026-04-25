@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSE-160 Assignment 2 - Blocky Bat (JH)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #1a1a2e;
+    color: #eee;
+    margin: 16px;
+  }
+  h1 { margin: 6px 0; font-size: 20px; }
+  #webgl {
+    background: #0f0f1a;
+    border: 1px solid #444;
+    display: block;
+  }
+  .panel {
+    margin-top: 10px;
+    max-width: 600px;
+    background: #232342;
+    padding: 10px 14px;
+    border-radius: 6px;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+    font-size: 13px;
+  }
+  .row label {
+    width: 170px;
+  }
+  input[type=range] { flex: 1; }
+  button {
+    margin-right: 8px;
+    padding: 6px 10px;
+    background: #4a4a8a;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover { background: #5a5aaa; }
+  #fps {
+    color: #6f6;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  .hint { color: #aaa; font-size: 12px; margin-top: 8px; }
+</style>
+</head>
+<body onload="main()">
+
+<h1>CSE-160 Asg 2 - Blocky Bat | JH</h1>
+
+<canvas id="webgl" width="600" height="600">
+  Please use a browser that supports "canvas"
+</canvas>
+
+<div class="panel">
+  <div class="row">
+    <button id="animOn">Animation ON</button>
+    <button id="animOff">Animation OFF</button>
+    <span id="fps">FPS: --</span>
+  </div>
+
+  <div class="row">
+    <label>Global Y Rotation:</label>
+    <input type="range" id="globalRot" min="-180" max="180" value="0">
+  </div>
+  <div class="row">
+    <label>Shoulder (joint 1):</label>
+    <input type="range" id="shoulder" min="-60" max="60" value="0">
+  </div>
+  <div class="row">
+    <label>Forearm (joint 2):</label>
+    <input type="range" id="forearm" min="-80" max="20" value="0">
+  </div>
+  <div class="row">
+    <label>Wing tip (joint 3):</label>
+    <input type="range" id="wingtip" min="-60" max="60" value="0">
+  </div>
+  <div class="row">
+    <label>All joints:</label>
+    <input type="range" id="allJoints" min="-60" max="60" value="0">
+  </div>
+  <div class="row">
+    <label>Head bob:</label>
+    <input type="range" id="head" min="-30" max="30" value="0">
+  </div>
+
+  <div class="hint">
+    Drag mouse on canvas to rotate. Shift+click for poke animation (spin!).<br>
+    Note: Joint sliders work when animation is OFF. Click "Animation ON" to see flapping.
+  </div>
+</div>
+
+<script src="lib/cuon-matrix-cse160.js"></script>
+<script src="lib/cuon-utils.js"></script>
+<script src="lib/webgl-debug.js"></script>
+<script src="lib/webgl-utils.js"></script>
+<script src="src/Cube.js"></script>
+<script src="src/Cylinder.js"></script>
+<script src="src/asg2.js"></script>
+
+</body>
+</html>
