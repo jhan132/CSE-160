@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE-160 Assignment 5 - Three.js World</title>
+
+  <!-- Three.js setup (per CSE-160 docs: import map from the jsDelivr CDN) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@v0.184.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.184.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; font-family: Arial, Helvetica, sans-serif; }
+    #c { display: block; width: 100%; height: 100%; }
+    #hud {
+      position: fixed; top: 14px; left: 14px; color: #fff;
+      background: rgba(0,0,0,0.45); padding: 12px 16px; border-radius: 10px;
+      font-size: 14px; line-height: 1.5; max-width: 260px; user-select: none; pointer-events: none;
+    }
+    #hud b { color: #ffd840; }
+    #gems { margin-top: 6px; font-size: 15px; }
+    #msg {
+      position: fixed; top: 16%; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: 26px; font-weight: bold; text-shadow: 0 2px 8px #000;
+      opacity: 0; transition: opacity 0.4s; pointer-events: none;
+    }
+    #overlay {
+      position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.55); color: #fff; cursor: pointer; text-align: center;
+    }
+    #overlay .box { background: rgba(20,24,32,0.85); padding: 28px 36px; border-radius: 14px; }
+    #overlay h1 { margin: 0 0 8px; font-size: 22px; color: #ffd840; }
+    #overlay p { margin: 4px 0; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <div id="hud">
+    <div><b>CSE-160 Assignment 5</b></div>
+    <div>WASD to move &middot; mouse to look</div>
+    <div>Position: <span id="pos">(16.0, 28.0)</span></div>
+    <div id="gems">Gems: <span id="count">0</span> / <span id="total">0</span> &mdash; walk into them</div>
+  </div>
+  <div id="msg"></div>
+
+  <div id="overlay">
+    <div class="box">
+      <h1>My Three.js World</h1>
+      <p>Click to start exploring</p>
+      <p>WASD = move &nbsp;|&nbsp; mouse = look &nbsp;|&nbsp; Esc = release</p>
+      <p>Collect all 8 gems!</p>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
